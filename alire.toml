@@ -16,3 +16,6 @@ development.optimization = ["-O0"]
 development.style_checks = ["-gnaty", "-gnaty-B"]
 development.contracts = "Yes"
 "*".debug_info = "Yes"
+
+[[depends-on]]
+vss_extra = "^26.0.0"
