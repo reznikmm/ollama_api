@@ -1,0 +1,27 @@
+name = "bot"
+description = "A simple AI bot, Clownada"
+version = "0.1.0-dev"
+
+authors = ["Max Reznik"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = []
+
+executables = ["bot"]
+
+[build-switches]
+development.optimization = ["-O0"]
+development.style_checks = ["-gnaty", "-gnaty-B"]
+development.contracts = "Yes"
+"*".debug_info = "Yes"
+
+[build-profiles]
+ollama_api = "development"
+
+[[depends-on]]
+ollama_api = "*"
+
+[[pins]]
+ollama_api = { path='..' }
