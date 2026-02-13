@@ -5,12 +5,14 @@
 --
 
 pragma Ada_2022;
+with Interfaces;
 with Minimal_Perfect_Hash;
 
 package body Ollama_API.Types.Inputs is
    pragma Style_Checks (Off);
    use type VSS.JSON.JSON_Number_Kind;
    use type VSS.Strings.Virtual_String;
+   use type Interfaces.Integer_64;
 
    procedure Input_Any_Value
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
@@ -972,7 +974,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.total_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -987,7 +989,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.load_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -1018,7 +1020,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.prompt_eval_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -1048,7 +1050,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.eval_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -1288,7 +1290,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.total_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -1303,7 +1305,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.load_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -1444,7 +1446,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.total_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -1459,7 +1461,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.load_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -1490,7 +1492,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.prompt_eval_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -1520,7 +1522,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.eval_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -3151,7 +3153,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.total_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -3166,7 +3168,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.load_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -3197,7 +3199,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.prompt_eval_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
@@ -3227,7 +3229,7 @@ package body Ollama_API.Types.Inputs is
                          Reader.Number_Value.Kind = VSS.JSON.JSON_Integer
                      then
                         Value.eval_duration.Value :=
-                          Integer (Reader.Number_Value.Integer_Value);
+                          Integer (Reader.Number_Value.Integer_Value / 1E6);
                         Reader.Read_Next;
                      else
                         Success := False;
