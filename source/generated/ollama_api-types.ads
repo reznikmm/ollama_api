@@ -203,18 +203,24 @@ package Ollama_API.Types is
    end record;
 
    type ToolCall is record
+      id         : VSS.Strings.Virtual_String;
+      --  Tool call id
       a_function : Optional_ToolCall_function;
    end record;
 
    type ChatMessage is record
-      role       : ChatMessage_role;
+      role         : ChatMessage_role;
       --  Author of the message.
-      content    : VSS.Strings.Virtual_String;
+      content      : VSS.Strings.Virtual_String;
       --  Message text content
-      images     : VSS.String_Vectors.Virtual_String_Vector;
+      images       : VSS.String_Vectors.Virtual_String_Vector;
       --  Optional list of inline images for multimodal models
-      tool_calls : ToolCall_Vector;
+      tool_calls   : ToolCall_Vector;
       --  Tool call requests produced by the model
+      tool_name    : VSS.Strings.Virtual_String;
+      --  tool name
+      tool_call_id : VSS.Strings.Virtual_String;
+      --  tool call id
    end record;
 
    type VersionResponse is record

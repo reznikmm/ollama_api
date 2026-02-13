@@ -193,6 +193,10 @@ package body Ollama_API.Types.Outputs is
 
    begin
       Handler.Start_Object;
+      if not Value.id.Is_Null then
+         Handler.Key_Name ("id");
+         Handler.String_Value (Value.id);
+      end if;
       if Value.a_function.Is_Set then
          Handler.Key_Name ("function");
          Output_ToolCall_function (Handler, Value.a_function.Value);
@@ -224,6 +228,14 @@ package body Ollama_API.Types.Outputs is
             Output_ToolCall (Handler, Value.tool_calls (J));
          end loop;
          Handler.End_Array;
+      end if;
+      if not Value.tool_name.Is_Null then
+         Handler.Key_Name ("tool_name");
+         Handler.String_Value (Value.tool_name);
+      end if;
+      if not Value.tool_call_id.Is_Null then
+         Handler.Key_Name ("tool_call_id");
+         Handler.String_Value (Value.tool_call_id);
       end if;
       Handler.End_Object;
    end Output_ChatMessage;

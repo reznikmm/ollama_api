@@ -263,12 +263,24 @@
             "$ref": "#/definitions/ToolCall"
           },
           "description": "Tool call requests produced by the model"
+        },
+        "tool_name": {
+          "type": "string",
+          "description": "tool name"
+        },
+        "tool_call_id": {
+          "type": "string",
+          "description": "tool call id"
         }
       }
     },
     "ToolCall": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "Tool call id"
+        },
         "function": {
           "type": "object",
           "required": [

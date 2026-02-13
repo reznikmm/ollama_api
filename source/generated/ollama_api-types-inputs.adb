@@ -320,7 +320,7 @@ package body Ollama_API.Types.Inputs is
    end Input_ChatStreamEvent;
 
    package ToolCall_Minimal_Perfect_Hash is new
-     Minimal_Perfect_Hash (["function"]);
+     Minimal_Perfect_Hash (["id", "function"]);
 
    package ToolCall_function_Minimal_Perfect_Hash is new
      Minimal_Perfect_Hash (["name", "description", "arguments"]);
@@ -407,6 +407,16 @@ package body Ollama_API.Types.Inputs is
 
                case Index is
                   when 1      =>
+                     --  id
+                     Reader.Read_Next;
+                     if Reader.Is_String_Value then
+                        Value.id := Reader.String_Value;
+                        Reader.Read_Next;
+                     else
+                        Success := False;
+                     end if;
+
+                  when 2      =>
                      --  function
                      Reader.Read_Next;
                      Value.a_function := (Is_Set => True, Value => <>);
@@ -430,7 +440,13 @@ package body Ollama_API.Types.Inputs is
    end Input_ToolCall;
 
    package ChatMessage_Minimal_Perfect_Hash is new
-     Minimal_Perfect_Hash (["role", "content", "images", "tool_calls"]);
+     Minimal_Perfect_Hash
+       (["role",
+         "content",
+         "images",
+         "tool_calls",
+         "tool_name",
+         "tool_call_id"]);
 
    procedure Input_ChatMessage
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
@@ -511,6 +527,26 @@ package body Ollama_API.Types.Inputs is
                            Reader.Read_Next;  --  skip End_Array
 
                         end if;
+                     else
+                        Success := False;
+                     end if;
+
+                  when 5      =>
+                     --  tool_name
+                     Reader.Read_Next;
+                     if Reader.Is_String_Value then
+                        Value.tool_name := Reader.String_Value;
+                        Reader.Read_Next;
+                     else
+                        Success := False;
+                     end if;
+
+                  when 6      =>
+                     --  tool_call_id
+                     Reader.Read_Next;
+                     if Reader.Is_String_Value then
+                        Value.tool_call_id := Reader.String_Value;
+                        Reader.Read_Next;
                      else
                         Success := False;
                      end if;
