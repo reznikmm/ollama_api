@@ -1,3 +1,8 @@
+--  SPDX-FileCopyrightText: 2026 Max Reznik <reznikmm@gmail.com>
+--
+--  SPDX-License-Identifier: MIT OR Apache-2.0 WITH LLVM-exception
+------------------------------------------------------------------
+
 pragma Ada_2022;
 
 with Ada.Streams;

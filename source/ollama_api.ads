@@ -42,19 +42,6 @@ package Ollama_API is
      (Self  : in out Server'Class;
       Value : HTTP_Post_Request);
 
-   type String_Parameter is record
-      Name        : VSS.Strings.Virtual_String;
-      Description : VSS.Strings.Virtual_String;
-      Required    : Boolean;
-   end record;
-
-   type String_Parameter_Array is
-     array (Positive range <>) of String_Parameter;
-
-   function To_JSON_Scheme
-     (Self : in out Server'Class;
-      List : String_Parameter_Array) return Ollama_API.Types.Any_Object;
-
    function JSON_Format return Ollama_API.Types.Any_Object;
    --  Just encoded "json" string to pass as Format argument in Chat request
 
