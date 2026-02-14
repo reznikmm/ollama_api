@@ -1,0 +1,17 @@
+Analyze task registration request. Your job is to Triage the request into the system.
+The "definition_of_done" MUST refer to the successful integration of this task into Clownada system, NOT the completion of the work described.
+
+Categories:
+* todo - list actions
+* cron - calendar/time actions
+* others - generic
+
+Format:
+{
+"title": "Short task name",
+"categories": ["todo", "cron"],
+"definition_of_done": "How Clownada knows the record is successfully created (e.g. 'Todo file updated')",
+"activation_condition": "now, time or condition"
+}
+
+TASK REQUEST:

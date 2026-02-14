@@ -197,12 +197,12 @@ package body Ollama_API.Tools is
       return Result : String_Maps.Map do
          for Item of Arguments loop
             case Item.Kind is
-            when Key_Name =>
-               Name := Item.Key_Name;
-            when String_Value =>
-               Result.Insert (Name, Item.String_Value);
-            when others =>
-               null;
+               when Key_Name =>
+                  Name := Item.Key_Name;
+               when String_Value =>
+                  Result.Insert (Name, Item.String_Value);
+               when others =>
+                  null;
             end case;
          end loop;
       end return;
