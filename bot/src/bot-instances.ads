@@ -9,7 +9,7 @@ with Ollama_API.Tools;
 with VSS.Strings;
 
 with Bot.Prompts;
-with HTTP_Requests;
+with Bot.Logging_HTTP;
 
 with Bot.Tools.Current_Times;
 with Bot.Tools.Write_Todos;
@@ -31,7 +31,7 @@ private
 
    type Bot_Instance is tagged limited record
       Ollama  : Ollama_API.Server;
-      HTTP    : aliased HTTP_Requests.HTTP_Request;
+      HTTP    : aliased Bot.Logging_HTTP.HTTP_Request;
       Model   : VSS.Strings.Virtual_String := "llama3.1:8b";
       Prompts : Prompt_List;
       Tools   : Ollama_API.Tools.Tool_Register;

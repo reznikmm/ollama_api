@@ -23,6 +23,7 @@ package body Bot.Instances is
      (Self  : in out Bot_Instance'Class;
       Error : out VSS.Strings.Virtual_String) is
    begin
+      Self.HTTP.Set_Log_Folder ("work/log");
       Self.Ollama.Set_Request_Handler (Self.HTTP'Unchecked_Access);
       Self.Tools.Register ("write_todo", Self.Todo'Unchecked_Access);
       Self.Tools.Register ("current_time", Self.Current_Time'Unchecked_Access);
